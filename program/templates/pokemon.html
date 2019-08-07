@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>List of pokemon</h1>
+{#    <h2>Enter a color to see which Pokemon are a match!</h2>#}
+{#    <div style="margin-bottom: 20px;">#}
+{#        <form class="mui-form" method="POST" action="/pokemon">#}
+{#            <label for="pokecolor">Pokemon color</label>#}
+{#            <input type="text" class="form-control" id="pokecolor" name="pokecolor" placeholder="Example: blue"><br>#}
+{#            <button type="submit" class="mui-btn mui-btn-raised" value="Submit">Submit</button>#}
+{#        </form>#}
+{#    </div>#}
+    <p>We get a list of pokemon (ids from 1 to 10) and some of their attributes <a href="https://pokeapi.co/">via API</a>.</p>
+    <div>
+        {% if pokemon %}
+        <table class="mui-table mui-table--bordered">
+            <thead>
+                <tr>
+                    <th>Pokemon</th>
+                    <th>Color</th>
+                    <th>Habitat</th>
+                    <th>Shape</th>
+                    <th>Flavor Text</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in pokemon %}
+                <tr>
+                    <td>{{ p.name|title }}</td>
+                    <td>{{ p.color|title }}</td>
+                    <td>{{ p.habitat|title }}</td>
+                    <td>{{ p.shape|title }}</td>
+                    <td>{{ p.flavor_text }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+
+{% endblock %}
